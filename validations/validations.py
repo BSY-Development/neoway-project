@@ -30,9 +30,9 @@ def format_cpf(cpf):
     is_valid = cpf_validate(formatted)
     # Verifica se é um cpf válido, e retorna ele ou False.
     if is_valid:
-        return formatted
+        return { "formatted": formatted, "is_valid": True }
     else:
-        return is_valid
+        return { "formatted": formatted, "is_valid": False }
 
 
 def format_name(name):
