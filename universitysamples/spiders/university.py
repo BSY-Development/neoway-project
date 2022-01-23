@@ -23,13 +23,14 @@ class UniversitySpider(scrapy.Spider):
     def parse_user(self, response):
         # pega o cpf da url
         cpf = response.request.url.split("/")[4]
-        is_valid = format_cpf(cpf)
+        cpf_dict = format_cpf(cpf)
         # Valida o cpf, e se for válido, formata e guarda no banco, caso não seja os dados são pulados.
-        if is_valid:
-            users = response.css('div')
-            data = [user.css('div::text').get().strip() for user in users]
-            yield {
-                'name': format_name(data[0]),
-                'cpf': is_valid,
-                'score': float(data[1]),
-            }
+        users = response.css('div')
+        data = [user.css('div::text').get().strip() for user in users]
+        yield {
+            'name': format_name(data[0]),
+            'cpf': cpf_dict['formatted'],
+            'score': float(data[1]),
+            'valid_cpf': cpf_dict['is_valid'],
+        }
+

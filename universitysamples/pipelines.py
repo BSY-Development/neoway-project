@@ -31,11 +31,18 @@ class UniversitysamplesPipeline:
     def create_database(self):
         self.cur.execute("CREATE SCHEMA IF NOT EXISTS University")
 
+    # Cria a tabela Users para armazenar os usuarios, e a tabela Rejected para guardar as pessoas 
+    # com o cpf inválido, caso seja necessário para entrar em contato com a pessoa para atualizar os dados.
     def create_table(self):
         self.cur.execute("USE University")
         self.cur.execute("CREATE TABLE IF NOT EXISTS Users (name VARCHAR(100), cpf VARCHAR(11), score FLOAT)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS Rejected (name VARCHAR(100), cpf VARCHAR(11), score FLOAT)")
 
     def process_item(self, item, spider):
-        self.cur.execute("INSERT INTO Users VALUES (%s, %s, %s)", (item['name'], item['cpf'], item['score']))
+        # Caso o cpf seja valido insere em Users e invalido insere em Rejected
+        if item['valid_cpf']:
+            self.cur.execute("INSERT INTO Users VALUES (%s, %s, %s)", (item['name'], item['cpf'], item['score']))
+        else:
+            self.cur.execute("INSERT INTO Rejected VALUES (%s, %s, %s)", (item['name'], item['cpf'], item['score']))
         self.con.commit()
         return item
