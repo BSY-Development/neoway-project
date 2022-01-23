@@ -36,6 +36,7 @@ def format_cpf(cpf):
 
 
 def format_name(name):
+    # Caso não seja necessário remover nenhum titulo, apenas comente as proximas 4 linhas.
     regex = r'(\w{2,}\.( ){1,})|(, \w+)|Miss|I |II|III|IV|V |MD|DDS|PhD|DVM|PHD'
     cleaned_name = re.sub(regex, r'', name).rstrip().lstrip() ## Remove alguns titulos
     no_accent = ''.join(c for c in unicodedata.normalize('NFD', cleaned_name)
