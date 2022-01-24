@@ -42,7 +42,7 @@ Após instalar as dependências do projeto e criar o arquivo `.env`, você está
 ```sh
 scrapy crawl university
 ```
-_`OBS: Quanto mais páginas, mais tempo irá demorar, todas as páginas levam cerca de 20 minutos para finalizar.`_
+_`OBS: Quanto maior o número páginas, maior será o tempo para finalizar, todas as páginas levam cerca de 20 minutos para finalizar.`_
 
 
-Por [Bruno Yamamoto](https://www.brunoy.dev/)
+#### Por [Bruno Yamamoto](https://www.brunoy.dev/)
