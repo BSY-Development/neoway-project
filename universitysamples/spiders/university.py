@@ -8,7 +8,7 @@ class UniversitySpider(scrapy.Spider):
     # Caso queira, você pode modificar o range alterando os valores para first_page = 1 e last_page = 10
     # para pegar os dados somente das 10 primeiras páginas.
     first_page = 1
-    last_page = 4671
+    last_page = 50
     range_scrap = range(first_page, last_page + 1)
 
     # list comprehension para guardar todas as urls que serão acessadas.
