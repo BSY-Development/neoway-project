@@ -44,5 +44,7 @@ scrapy crawl university
 ```
 _`OBS: Quanto maior o número páginas, maior será o tempo para finalizar, todas as páginas levam cerca de 20 minutos para finalizar.`_
 
+## :gear: Fluxo de fucionamento
+Ao utilizar o comando `scrapy crawl university`, o sistema irá acessar uma list predefinida (por list comprehension) de todos os links a serem acessados durante a execução, e ao entrar na página o software irá buscar pelos elementos que combinem com o seletor indicado durante a configuração. E trazer seu nome, cpf e pontuação (score), com os dados obtidos, o software submete-os a uma higienização de dados, mantendo apenas as informações necessárias e padronizadas para todas as pessoas, sendo então armazenadas no banco, em sua respectiva tabela, e caso não possua um cpf válido, os dados da pessoa serão armazenados em uma diferente tabela para manter uma organização caso a informação se torne pertinente em algum momento para com o usuário. O sistema repete o fluxo até que seja finalizado o processo.
 
 #### Por [Bruno Yamamoto](https://www.brunoy.dev/)
