@@ -12,7 +12,7 @@ class UniversitySpider(scrapy.Spider):
     range_scrap = range(first_page, last_page + 1)
 
     # list comprehension para guardar todas as urls que serão acessadas.
-    start_urls = [f'https://sample-university-site.herokuapp.com/approvals/{i}' for i in range_scrap]
+    start_urls = (f'https://sample-university-site.herokuapp.com/approvals/{i}' for i in range_scrap)
 
     # Entra na página e localiza todos os elementos com cpf e pega sua href
     def parse(self, response):
@@ -33,4 +33,3 @@ class UniversitySpider(scrapy.Spider):
             'score': float(data[1]),
             'valid_cpf': cpf_dict['is_valid'],
         }
-
