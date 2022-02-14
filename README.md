@@ -11,6 +11,7 @@ Este projeto utiliza algumas bibliotecas externas que são necessárias para que
 - [Scrapy](https://pypi.org/project/Scrapy/) - Para realizar a raspagem de dados no site.
 - [Mysql.Connector](https://pypi.org/project/mysql-connector-python/) - Para conectar ao banco de dados mySQL.
 - [Dotenv](https://pypi.org/project/python-dotenv/) - Para acessar variáveis de ambiente de conteúdo sensível.
+- [Pytest](https://pypi.org/project/pytest/) - Para realizar os testes das validações.
 
 
 ## :wrench: Instalação
@@ -37,6 +38,10 @@ pip3 install mysql-connector-python
 ```sh
 pip3 install python-dotenv
 ```
+- `pytest`
+```sh
+pip3 install pytest
+```
 ## :gear: Rodando o código
 Após instalar as dependências do projeto e criar o arquivo `.env`, você está pronto para rodar a aplicação. Por padrão, o código irá passar por todas as 4761 páginas, caso queira rodar um valor menor de páginas, vá até o arquivo localizado em `./universitysamples/spiders/university.py`. Altere o valor de `first_page` (mínimo de 1) e `last_page` (máximo de 4761). Ao rodar será criado e armazenado os dados obtidos em um banco de dados mySQL, dentro de 2 tabelas, onde a tabela Users ficam os usuários que possuem dados válidos, e na tabela Rejected ficam os usuários que não possuem um CPF válido. Para rodar o código, utilize o comando abaixo. 
 ```sh
@@ -46,5 +51,8 @@ _`OBS: Quanto maior o número páginas, maior será o tempo para finalizar, toda
 
 ## :gear: Fluxo de funcionamento
 Ao utilizar o comando `scrapy crawl university`, o sistema irá acessar uma list predefinida (utilizando generator) de todos os links a serem acessados durante a execução, e ao entrar na página o software irá buscar pelos elementos que combinem com o seletor indicado durante a configuração. E trazer seu nome, cpf e pontuação (score), com os dados obtidos, o software submete-os a uma higienização de dados, mantendo apenas as informações necessárias e padronizadas para todas as pessoas, sendo então armazenadas no banco, em sua respectiva tabela, e caso não possua um cpf válido, os dados da pessoa serão armazenados em uma diferente tabela para manter uma organização caso a informação se torne pertinente em algum momento para com o usuário. O sistema repete o fluxo até que seja finalizado o processo.
+
+## :nut_and_bolt: Testes
+Os testes se encontram na pasta `./tests`, ele irá testar se o retorno das funções criadas é o esperado. Para rodar os testes utilize o comando `python3 -m pytest`. Os testes possuem um total de 100% de cobertura das validações.
 
 #### Por [Bruno Yamamoto](https://www.brunoy.dev/)
