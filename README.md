@@ -53,6 +53,6 @@ _`OBS: Quanto maior o número páginas, maior será o tempo para finalizar, toda
 Ao utilizar o comando `scrapy crawl university`, o sistema irá acessar uma list predefinida (utilizando generator) de todos os links a serem acessados durante a execução, e ao entrar na página o software irá buscar pelos elementos que combinem com o seletor indicado durante a configuração. E trazer seu nome, cpf e pontuação (score), com os dados obtidos, o software submete-os a uma higienização de dados, mantendo apenas as informações necessárias e padronizadas para todas as pessoas, sendo então armazenadas no banco, em sua respectiva tabela, e caso não possua um cpf válido, os dados da pessoa serão armazenados em uma diferente tabela para manter uma organização caso a informação se torne pertinente em algum momento para com o usuário. O sistema repete o fluxo até que seja finalizado o processo.
 
 ## :nut_and_bolt: Testes
-Os testes se encontram na pasta `./tests`, ele irá testar se o retorno das funções criadas é o esperado. Para rodar os testes utilize o comando `python3 -m pytest`. Os testes possuem um total de 100% de cobertura das validações.
+Os testes se encontram na pasta `./tests`, ele irá testar se o retorno das funções criadas é o esperado. Para rodar os testes utilize o comando `python3 -m pytest`. Os testes possuem um total de [100% de cobertura](https://github.com/BSY-Development/neoway-project/blob/main/coverage/Coverage.png) das validações.
 
 #### Por [Bruno Yamamoto](https://www.brunoy.dev/)
