@@ -25,10 +25,10 @@ def cpf_validate(numbers):
 
 # Função para formatar o CPF
 def format_cpf(cpf):
+    is_valid = cpf_validate(cpf)
     # Remove os . (pontos) e - (hífens).
     formatted = re.sub('[.-]', '', cpf)
-    is_valid = cpf_validate(formatted)
-    # Verifica se é um cpf válido, e retorna ele ou False.
+    # Verifica se é um cpf válido, retornando o cpf e se é válido.
     if is_valid:
         return { "formatted": formatted, "is_valid": True }
     else:
